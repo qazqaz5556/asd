@@ -1,0 +1,163 @@
+{
+  "id": "1492961",
+  "name": "ebput",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "348607",
+      "name": "lock",
+      "font_class": "lock",
+      "unicode": "eb3f",
+      "unicode_decimal": 60223
+    },
+    {
+      "icon_id": "400825",
+      "name": "home",
+      "font_class": "home",
+      "unicode": "e749",
+      "unicode_decimal": 59209
+    },
+    {
+      "icon_id": "581022",
+      "name": "pencil",
+      "font_class": "pencil",
+      "unicode": "e67c",
+      "unicode_decimal": 59004
+    },
+    {
+      "icon_id": "593479",
+      "name": "上下转换",
+      "font_class": "tb-change",
+      "unicode": "e619",
+      "unicode_decimal": 58905
+    },
+    {
+      "icon_id": "593480",
+      "name": "左右转换",
+      "font_class": "lr-change",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "606275",
+      "name": "白板",
+      "font_class": "white-board",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "845834",
+      "name": "完成",
+      "font_class": "complete",
+      "unicode": "e66e",
+      "unicode_decimal": 58990
+    },
+    {
+      "icon_id": "1418250",
+      "name": "loading",
+      "font_class": "loading1",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "1927252",
+      "name": "undo",
+      "font_class": "undo",
+      "unicode": "e65a",
+      "unicode_decimal": 58970
+    },
+    {
+      "icon_id": "1927253",
+      "name": "redo",
+      "font_class": "redo",
+      "unicode": "e65b",
+      "unicode_decimal": 58971
+    },
+    {
+      "icon_id": "2517920",
+      "name": "clean",
+      "font_class": "clean",
+      "unicode": "e7b4",
+      "unicode_decimal": 59316
+    },
+    {
+      "icon_id": "2691165",
+      "name": "上移一层",
+      "font_class": "goup",
+      "unicode": "e715",
+      "unicode_decimal": 59157
+    },
+    {
+      "icon_id": "2691166",
+      "name": "下移一层",
+      "font_class": "godown",
+      "unicode": "e716",
+      "unicode_decimal": 59158
+    },
+    {
+      "icon_id": "2815719",
+      "name": "上传",
+      "font_class": "upload",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "3978412",
+      "name": "清空",
+      "font_class": "qingkong",
+      "unicode": "e678",
+      "unicode_decimal": 59000
+    },
+    {
+      "icon_id": "4512054",
+      "name": "还原屏幕大小",
+      "font_class": "reset",
+      "unicode": "e64b",
+      "unicode_decimal": 58955
+    },
+    {
+      "icon_id": "5255211",
+      "name": "复制",
+      "font_class": "copy",
+      "unicode": "e800",
+      "unicode_decimal": 59392
+    },
+    {
+      "icon_id": "5651498",
+      "name": "缩小",
+      "font_class": "suoxiao",
+      "unicode": "e67b",
+      "unicode_decimal": 59003
+    },
+    {
+      "icon_id": "6248386",
+      "name": "放大",
+      "font_class": "fangda",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "7215720",
+      "name": "Loading",
+      "font_class": "loading2",
+      "unicode": "e6e8",
+      "unicode_decimal": 59112
+    },
+    {
+      "icon_id": "7712749",
+      "name": "ssh",
+      "font_class": "ssh",
+      "unicode": "e73c",
+      "unicode_decimal": 59196
+    },
+    {
+      "icon_id": "7789612",
+      "name": "橡皮擦",
+      "font_class": "erase",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    }
+  ]
+}

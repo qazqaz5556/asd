@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .mode {
+            background: #eee;
+            color: #333;
+        }
+
+        .text-mode:after {
+            content: 'light';
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .mode {
+                background-color: #333;
+                color: #eee;
+            }
+
+            .text-mode:after {
+                content: 'dark';
+            }
+        }
+        @keyframes  {
+            
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="demo mode">
+        <p>text</p>
+        <p>
+            目前的主题
+            <span class="text-mode"></span>
+            主题
+        </p>
+    </div>
+</body>
+
+</html>
