@@ -1722,7 +1722,7 @@
                                 return downloadComposePicture()
                             })
                             .then((res) => {
-                                let src = res.data.result.replace('./', 'http://10.108.126.36:8900/flaskr2/')
+                                let src = res.data.result.replace('./', 'http://10.112.224.111:8900/flaskr2/')
                                 saveAs(src, src.substr(src.lastIndexOf('/') + 1))
                             })
                             .catch((e) => {
@@ -1784,7 +1784,7 @@
                             .then((res) => {
                                 this.$message({message: 'success', type: 'success'})
                                 console.log(res.data);
-                                window.location.href = 'http://10.108.126.36:8900/draft/result'
+                                window.location.href = 'http://10.112.224.111:8900/draft/result'
                                 // loading.close()
                             })
                             .catch((e) => {
