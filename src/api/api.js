@@ -42,6 +42,12 @@ export let getFurtherCrop = (base64, isonserver) => {
     }
     return axios.post(serverUrl + '/draft/furtherCrop', qs.stringify({value: base64, base64, isonserver, scale: 1}));
 };
+export let getFurtherCrop3D = (base64, isonserver) => {
+    if (/data:image/.test(base64)) {
+        base64 = base64.split(',')[1];
+    }
+    return axios.post(serverUrl + '/draft/furtherCrop3D', qs.stringify({value: base64, base64, isonserver, scale: 1}));
+};
 
 /**
  *
