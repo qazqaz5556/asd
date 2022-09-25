@@ -2,7 +2,7 @@
   <div class="edit-page">
     <input
       type="file"
-      @change="handleFileChange"
+      @change="handleFileChange3d"
       accept="image/*"
       ref="fileInput"
       style="display: none"
@@ -23,15 +23,15 @@
     />
     <div class="side-menu side-menu-left" :class="{ open: leftMenuOpened }">
       <div class="content-container">
-        <div @click="handleToDraftCanvas" class="left-menu-item">
+        <!-- <div @click="handleToDraftCanvas" class="left-menu-item">
           <i class="el-icon-search"></i>
         </div>
-        <span class="left-menu-text">草图检索</span>
+        <span class="left-menu-text">草图检索</span> -->
         <div @click="handleUpdateImg" class="left-menu-item">
           <i class="el-icon-upload2"></i>
         </div>
         <span class="left-menu-text">上传文件</span>
-        <div @click="handleComplete" class="left-menu-item">
+        <!-- <div @click="handleComplete" class="left-menu-item">
           <i class="el-icon-success"></i>
         </div>
         <span class="left-menu-text">完成</span>
@@ -42,7 +42,7 @@
         <div @click="handleLoadProject" class="left-menu-item">
           <i class="el-icon-folder-opened"></i>
         </div>
-        <span class="left-menu-text">加载</span>
+        <span class="left-menu-text">加载</span> -->
       </div>
       <div class="side-menu-switch" @click="switchMenuLeft">
         <i class="triangle triangle-top triangle-shadow"></i>
@@ -87,7 +87,7 @@
         class="controls-container"
         :class="{ 'control-bar-open': controlBarOpen }"
       >
-        <div class="controls-container-left">
+        <div v-show="false" class="controls-container-left">
           <div class="controls-container-group">
             <el-button size="small" @click="handleToolsClick('clip-front')">
               <i class="iconfont icon-pencil green"></i>
@@ -141,7 +141,7 @@
             </el-tooltip>
           </div>
         </div>
-        <div class="controls-container-center">
+        <div  class="controls-container-center">
           <div
             class="controls-container-group big-icon"
             :class="{ 'reverse-group': !controlBarOpen }"
@@ -152,7 +152,7 @@
             </el-button>
           </div>
         </div>
-        <div class="controls-container-right">
+        <div  v-show="false" class="controls-container-right">
           <div class="controls-container-group big-icon">
             <!--                        <el-button size="small"-->
             <!--                                   :disabled="!this.rightSprite"-->
@@ -303,39 +303,6 @@
         <i class="triangle triangle-bottom triangle-shadow"></i>
       </div>
     </div>
-
-    <el-dialog
-      title="Crop Image"
-      :visible.sync="dialogVisible"
-      append-to-body
-      top="10vh"
-      width="30%"
-      :before-close="beforeDialogClose"
-    >
-      <img
-        :src="furtherCropData.result"
-        alt="nothing to show"
-        v-if="furtherCropData.result"
-        style="width: 100%; max-height: 45vh; object-fit: contain"
-      />
-      <span slot="footer" class="dialog-footer">
-        <el-checkbox-group v-model="checkMatting">
-          <el-checkbox
-            v-for="item in furtherCropData.data"
-            :label="item.src"
-            :key="item.src"
-            border
-            class="custom-checkbox"
-            :class="['cus-' + item.color]"
-            :style="{ 'border-color': item.color }"
-          >
-            {{ item.name }}
-          </el-checkbox>
-        </el-checkbox-group>
-
-        <el-button @click="handleDoneClick">done</el-button>
-      </span>
-    </el-dialog>
   </div>
 </template>
 
@@ -453,16 +420,10 @@ export default {
       //新生成实例时不会更改$route
       console.log("$route change", this.$route);
       if (this.$route.path === "/edit-page") {
-        let handleFurtherCrop = (data) => {
+        let handleFurtherCrop3d = (data) => {
           this.furtherCropData = { ...data.data };
-          this.dialogVisible = true;
         };
-
-        if (from.path === "/") {
-          getFurtherCrop(this.selectedImgBase64, 0).then(handleFurtherCrop);
-        } else if (from.path === "/draft-canvas") {
-          getFurtherCrop(this.selectedImgUrl, 1).then(handleFurtherCrop);
-        }
+        getFurtherCrop3d(this.selectedImgBase64, 0).then(handleFurtherCrop3d);
       }
     },
   },
@@ -471,10 +432,11 @@ export default {
     History,
   },
   created() {
-    let st = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABMCAYAAADp0nC5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALvSURBVHhe7dnBattAGIXRvP9LZZNFSPIehZJFWtK0TQtqZCoxvpzUXtS2AtfwYWtxhpkfY5B89fL6e1IPDw9HJatklaxKd39/P93d3U23t7fTzc3NdH19PW3h1QGf+HWVG11aDvJtONTu+uevvWtZtfrB7q7/03rzOs8/Xqen55fp8enr9Onz498jXvZ1cMCHklWySlalWwb85dv3Dvhfyap0HTCsklXpOmBYJavSdcCwSlal+3ADnje8d4Dh85isOvV6z/0G22eyKl1/ImCVrErXAcMqWZVuswMeNzhuWIdSqx/s7vrM6/VZBKySVek6YFglq9J1wLBKVqXrgGGVrErXAcMqWZVuswPe+h3asev1GwyrZFW6DhhWyap0HTCsklXpNjvg3OjScpBL36G91+qX97d15lvl/id3IFmVbhlwH/YcSFal64BhlaxK1wHDKlmVrgOGVbIq3Ycb8LzhvQMMn8dk1anX639ysEpWpetPBKySVek6YFglq9JtdsDjBscN61Bq9YPdXZ95vT6LgFWyKl0HDKtkVboOGFbJqnQdMKySVek6YFglq9JtdsBbv0M7dr1+g2GVrErXAcMqWZWuA4ZVsirdZgecG11aDnLpO7T3Wv3y/rbOfKvc/+QOJKvSLQPuw54Dyap0HTCsklXpOmBYJavSdcCwSlal+3ADnje8d4Dh85isOvV6/U8OVsmqdP2JgFWyKl0HDKtkVbrNDnjc4LhhHUqtfrC76zOv12cRsEpWpeuAYZWsStcBwypZla4DhlWyKl0HDKtkVbrNDnjrd2jHrtdvMKySVek6YFglq9J1wLBKVqXb7IBzo0vLQS59h/Zeq1/e39aZb5X7n9yBZFW6ZcB92HMgWZWuA4ZVsipdBwyrZFW6DhhWyap0H27A84b3DjB8HpNVp16v/8nBKlmVrj8RsEpWpeuAYZWsSrfZAY8bHDesQ6nVD3Z3feb1+iwCVsmqdB0wrJJV6TpgWCWr0m1zwNP0B6NamEwXsdegAAAAAElFTkSuQmCC'
-    getFurtherCrop3d(st,2).then(res=>{
-        console.log(res)
-    })
+    let st =
+      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABMCAYAAADp0nC5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALvSURBVHhe7dnBattAGIXRvP9LZZNFSPIehZJFWtK0TQtqZCoxvpzUXtS2AtfwYWtxhpkfY5B89fL6e1IPDw9HJatklaxKd39/P93d3U23t7fTzc3NdH19PW3h1QGf+HWVG11aDvJtONTu+uevvWtZtfrB7q7/03rzOs8/Xqen55fp8enr9Onz498jXvZ1cMCHklWySlalWwb85dv3Dvhfyap0HTCsklXpOmBYJavSdcCwSlal+3ADnje8d4Dh85isOvV6z/0G22eyKl1/ImCVrErXAcMqWZVuswMeNzhuWIdSqx/s7vrM6/VZBKySVek6YFglq9J1wLBKVqXrgGGVrErXAcMqWZVuswPe+h3asev1GwyrZFW6DhhWyap0HTCsklXpNjvg3OjScpBL36G91+qX97d15lvl/id3IFmVbhlwH/YcSFal64BhlaxK1wHDKlmVrgOGVbIq3Ycb8LzhvQMMn8dk1anX639ysEpWpetPBKySVek6YFglq9JtdsDjBscN61Bq9YPdXZ95vT6LgFWyKl0HDKtkVboOGFbJqnQdMKySVek6YFglq9JtdsBbv0M7dr1+g2GVrErXAcMqWZWuA4ZVsirdZgecG11aDnLpO7T3Wv3y/rbOfKvc/+QOJKvSLQPuw54Dyap0HTCsklXpOmBYJavSdcCwSlal+3ADnje8d4Dh85isOvV6/U8OVsmqdP2JgFWyKl0HDKtkVbrNDnjc4LhhHUqtfrC76zOv12cRsEpWpeuAYZWsStcBwypZla4DhlWyKl0HDKtkVbrNDnjrd2jHrtdvMKySVek6YFglq9J1wLBKVqXb7IBzo0vLQS59h/Zeq1/e39aZb5X7n9yBZFW6ZcB92HMgWZWuA4ZVsipdBwyrZFW6DhhWyap0H27A84b3DjB8HpNVp16v/8nBKlmVrj8RsEpWpeuAYZWsSrfZAY8bHDesQ6nVD3Z3feb1+iwCVsmqdB0wrJJV6TpgWCWr0m1zwNP0B6NamEwXsdegAAAAAElFTkSuQmCC";
+    getFurtherCrop3d(st, 2).then((res) => {
+      console.log(res);
+    });
     console.log("created");
   },
   mounted() {
@@ -886,7 +848,7 @@ export default {
     handleUpdateImg() {
       this.$refs.fileInput.click();
     },
-    handleFileChange(e) {
+    handleFileChange3d(e) {
       //手动选择前景图
       let f = e.target.files[0];
       if (!/image/.test(f.type)) {
@@ -928,9 +890,9 @@ export default {
           // spinner: 'el-icon-loading',
           background: "rgba(0, 0, 0, 0.7)",
         });
-        getFurtherCrop(base64, 0)
+        getFurtherCrop3d(base64, 0)
           .then((data) => {
-            this.dialogVisible = true;
+            // this.dialogVisible = true;
             this.furtherCropData = { ...data.data };
             loading.close();
           })

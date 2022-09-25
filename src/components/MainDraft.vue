@@ -49,7 +49,7 @@
                 <span class="el-icon-upload2">上传前景图</span>
               </div>
               <div @click="jumpto3d" class="router-upload">
-                <span class="el-icon-upload2">3D建模</span>
+                <span class="">3D建模</span>
               </div>
             </div>
           </div>
