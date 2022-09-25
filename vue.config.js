@@ -16,6 +16,6 @@ module.exports = {
     // productionSourceMap: false,
     // 开发环境下的服务端配置
     devServer: {
-        proxy: 'http://http://10.112.224.111:8900/',
+        proxy: 'http://10.112.224.111:8900/',
     },
 }
