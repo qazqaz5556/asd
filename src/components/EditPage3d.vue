@@ -437,6 +437,8 @@ export default {
     History,
   },
   created() {
+    let data=
+    this.make3dchart(data)
     //     let base64 = "";
     //     getFurtherCrop3d(base64, 0).then((res) => {
     //
@@ -507,22 +509,35 @@ export default {
   },
   methods: {
     make3dchart(resdata) {
+      console.log(resdata.x1[0]);
+      console.log(resdata.x1[0]);
+      console.log(resdata.x[0]);
+      console.log(resdata.i[0]);
+      console.log(resdata.j[0]);
+      console.log(resdata.k[0]);
       let data1 = {
         type: "mesh3d",
-        x: resdata.x1,
-        y: resdata.y1,
-        z: resdata.z1,
-        i:resdata.i,
-        j:resdata.j,
-        k:resdata.k,
+        x: resdata.x1[0],
+        y: resdata.y1[0],
+        z: resdata.z1[0],
+        i: resdata.i[0],
+        j: resdata.j[0],
+        k: resdata.k[0],
       };
       let data2 = {
-        x:resdata.x,
-        y:resdata.y,
-        z:resdata.z,
+        x: resdata.x[0],
+        y: resdata.y[0],
+        z: resdata.z[0],
         mode: "markers",
         marker: {
-          size: 5,
+          color: "rgb(127, 127, 127)",
+          size: 12,
+          symbol: "circle",
+          line: {
+            color: "rgb(204, 204, 204)",
+            width: 1,
+          },
+          opacity: 0.8,
         },
         type: "scatter3d",
       };
@@ -904,7 +919,7 @@ export default {
         getFurtherCrop3d(base64, 0)
           .then((data) => {
             // this.dialogVisible = true;
-            this.make3dchart(data.data.result)
+            this.make3dchart(data.data.result);
             this.furtherCropData = { ...data.data };
             loading.close();
           })
