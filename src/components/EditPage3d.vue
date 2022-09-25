@@ -504,62 +504,10 @@ export default {
     window.$editPage = this;
     window.cv1 = this.cv1;
     // window.cv2 = this.cv2;
-    var data = [{
-    type: "mesh3d",
-    x: [0, 0, 1, 1, 0, 0, 1, 1],
-    y: [0, 1, 1, 0, 0, 1, 1, 0],
-    z: [0, 0, 0, 0, 1, 1, 1, 1],
-    i: [7, 0, 0, 0, 4, 4, 6, 6, 4, 0, 3, 2],
-    j: [3, 4, 1, 2, 5, 6, 5, 2, 0, 1, 6, 3],
-    k: [0, 7, 2, 3, 6, 7, 1, 1, 5, 5, 7, 6],
-    colorscale: [
-      [0, 'rgb(255, 0, 255)'],
-      [0.5, 'rgb(0, 255, 0)'],
-      [1, 'rgb(0, 0, 255)']
-    ]
-  },{
-    type: "mesh3d",
-    x: [0, 1, 2, 0],
-    y: [0, 0, 1, 2],
-    z: [0, 2, 0, 1],
-    i: [0, 0, 0, 1],
-    j: [1, 2, 3, 2],
-    k: [2, 3, 1, 3],
-    intensity: [0, 0.33, 0.66, 1],
-    colorscale: [
-      [0, 'rgb(255, 0, 0)'],
-      [0.5, 'rgb(0, 255, 0)'],
-      [1, 'rgb(0, 0, 255)']
-    ]
-  }
-];
-
-plotly.newPlot('myDiv', data, {});
-    // this.make3dchart(data);
+   
   },
   methods: {
     make3dchart(resdata) {
-      console.log(resdata.x1[0]);
-      console.log(resdata.x1[0]);
-      console.log(resdata.x[0]);
-      console.log(resdata.i[0]);
-      console.log(resdata.j[0]);
-      console.log(resdata.k[0]);
-      let data0={
-    type: "mesh3d",
-    x: [0, 1, 2, 0],
-    y: [0, 0, 1, 2],
-    z: [0, 2, 0, 1],
-    i: [0, 0, 0, 1],
-    j: [1, 2, 3, 2],
-    k: [2, 3, 1, 3],
-    intensity: [0, 0.33, 0.66, 1],
-    colorscale: [
-      [0, 'rgb(255, 0, 0)'],
-      [0.5, 'rgb(0, 255, 0)'],
-      [1, 'rgb(0, 0, 255)']
-    ]
-  }
       let data1 = {
         type: "mesh3d",
         x: resdata.x1[0],
@@ -582,7 +530,7 @@ plotly.newPlot('myDiv', data, {});
         mode: "markers",
         marker: {
           color: "rgb(127, 127, 127)",
-          size: 12,
+          size: 5,
           symbol: "circle",
           line: {
             color: "rgb(204, 204, 204)",
@@ -600,7 +548,7 @@ plotly.newPlot('myDiv', data, {});
           t: 0,
         },
       };
-      plotly.newPlot("myDiv", [data0, data2], layout);
+      plotly.newPlot("myDiv", [data1, data2], layout);
     },
     ...mapMutations([
       UPDATE_SELECTED_IMG_URL,
