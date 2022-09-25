@@ -437,8 +437,7 @@ export default {
     History,
   },
   created() {
-    let data=
-    this.make3dchart(data)
+   
     //     let base64 = "";
     //     getFurtherCrop3d(base64, 0).then((res) => {
     //
