@@ -46,7 +46,6 @@ export let getFurtherCrop3d = (base64, isonserver) => {
     if (/data:image/.test(base64)) {
         base64 = base64.split(',')[1];
     }
-    console.log(123)
     return axios.post(serverUrl + '/draft/3Ddraft' ,qs.stringify({ base64, isonserver}))
 };
 

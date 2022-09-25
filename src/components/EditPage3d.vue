@@ -77,7 +77,7 @@
           </div>
         </div>
         <div class="gutter"></div>
-    <div id="myDiv"  class="result-container" style="height:300px"></div>
+        <div id="myDiv" class="result-container" style="height: 300px"></div>
         <div v-if="false" class="result-container">
           <div class="canvas-container" ref="resultContainer">
             <!--                    <canvas class="result-canvas" ref="resultCanvas"></canvas>-->
@@ -347,7 +347,7 @@ import {
   REPLACE_HISTORY,
   UPDATE_RIGHT_IMAGES,
 } from "../store/mutation-types";
-import plotly from 'plotly.js-dist'
+import plotly from "plotly.js-dist";
 window.PIXI = PIXI;
 export default {
   name: "EditPage",
@@ -419,60 +419,31 @@ export default {
     ]),
     ...mapGetters(["canUndo", "canRedo"]),
   },
-//   watch: {
-//     $route(to, from) {
-//       console.log(to, from);
-//       //新生成实例时不会更改$route
-//       console.log("$route change", this.$route);
-//       if (this.$route.path === "/edit-page") {
-//         let handleFurtherCrop3d = (data) => {
-//           this.furtherCropData = { ...data.data };
-//         };
-//         getFurtherCrop3d(this.selectedImgBase64, 0).then(handleFurtherCrop3d);
-//       }
-//     },
-//   },
+  //   watch: {
+  //     $route(to, from) {
+  //       console.log(to, from);
+  //       //新生成实例时不会更改$route
+  //       console.log("$route change", this.$route);
+  //       if (this.$route.path === "/edit-page") {
+  //         let handleFurtherCrop3d = (data) => {
+  //           this.furtherCropData = { ...data.data };
+  //         };
+  //         getFurtherCrop3d(this.selectedImgBase64, 0).then(handleFurtherCrop3d);
+  //       }
+  //     },
+  //   },
   components: {
     DrawingBoard,
     History,
   },
   created() {
-//     let base64 = "";
-//     getFurtherCrop3d(base64, 0).then((res) => {
-//       const { x1, y1, z1, i, j, k, x, y, z } = res.data.result;
-//       let data1 = {
-//         type: "mesh3d",
-//         x: x1,
-//         y: y1,
-//         z: z1,
-//         i,
-//         j,
-//         k,
-//       };
-//       let data2 = {
-//         x,
-//         y,
-//         z,
-//         mode: "markers",
-//         marker: {
-//           size: 5,
-//         },
-//         type: "scatter3d",
-//       };
-//       let layout = {margin: {
-// 	l: 0,
-// 	r: 0,
-// 	b: 0,
-// 	t: 0
-//   }};
-//   plotly.newPlot('myDiv', [data1,data2], layout);
-//     });
-//     console.log("created");
+    //     let base64 = "";
+    //     getFurtherCrop3d(base64, 0).then((res) => {
+    //
+    //     console.log("created");
   },
   mounted() {
     //首次创建实例，初始化并发送网络请求，随后变化在路由里控制
-    console.log("mounted");
-    console.log("routerInfo", this.$route, this.$router);
     window.addEventListener("resize", this.handleWindowResize.bind(this), true);
 
     let { width, height } = getComputedStyle(this.$refs.sourceContainer);
@@ -486,11 +457,11 @@ export default {
     };
 
     this.cv1 = new PIXI.Application(config);
-    this.cv2 = new PIXI.Application(config);
+    // this.cv2 = new PIXI.Application(config);
     this.$refs.sourceContainer.appendChild(this.cv1.view);
-    this.$refs.resultContainer.appendChild(this.cv2.view);
+    // this.$refs.resultContainer.appendChild(this.cv2.view);
     this.cv1.view.classList.add("pixi-app");
-    this.cv2.view.classList.add("pixi-app");
+    // this.cv2.view.classList.add("pixi-app");
 
     this.leftSprite = new PIXI.Sprite();
     this.cv1.stage.addChild(this.leftSprite);
@@ -501,43 +472,21 @@ export default {
       let base64;
       let isonserver;
 
-      this.loadLeftTexture(this.selectedImgUrl).then(
-        () => {
-          this.leftSprite.texture = PIXI.Texture.from(this.selectedImgUrl);
-          this.leftSprite.textureSrc = this.selectedImgUrl;
-          if (/^blob:/.test(this.$root.__selectedImg.src)) {
-            // 本地选取的图片
-            base64 = this.selectedImgBase64;
-            isonserver = 0;
-          } else {
-            // 草图检索后的图片
-            base64 = this.$root.__selectedImg.src;
-            isonserver = 1;
-          }
-
-          this.leftImgBase64 = base64;
-          let loading = this.$loading({
-            lock: true,
-            text: "Loading",
-            // spinner: 'el-icon-loading',
-            background: "rgba(0, 0, 0, 0.7)",
-          });
-
-          getFurtherCrop(base64, isonserver)
-            .then((data) => {
-              this.furtherCropData = { ...data.data };
-              this.dialogVisible = true;
-              loading.close();
-            })
-            .catch((e) => {
-              this.$message({ type: "error", message: e });
-              loading.close();
-            });
-        },
-        (reason) => {
-          console.log(reason);
+      this.loadLeftTexture(this.selectedImgUrl).then(() => {
+        this.leftSprite.texture = PIXI.Texture.from(this.selectedImgUrl);
+        this.leftSprite.textureSrc = this.selectedImgUrl;
+        if (/^blob:/.test(this.$root.__selectedImg.src)) {
+          // 本地选取的图片
+          base64 = this.selectedImgBase64;
+          isonserver = 0;
+        } else {
+          // 草图检索后的图片
+          base64 = this.$root.__selectedImg.src;
+          isonserver = 1;
         }
-      );
+
+        this.leftImgBase64 = base64;
+      });
     }
     //本地读取文件
     if (this.$root.oneKeyImg) {
@@ -547,16 +496,47 @@ export default {
 
     //todo 添加左侧缩放功能
     // this.cv1.view.addEventListener('mousewheel', this.handleMouseWheel.bind(this));
-    this.cv2.view.addEventListener(
-      "mousewheel",
-      this.handleMouseWheel.bind(this)
-    );
+    // this.cv2.view.addEventListener(
+    //   "mousewheel",
+    //   this.handleMouseWheel.bind(this)
+    // );
 
     window.$editPage = this;
     window.cv1 = this.cv1;
-    window.cv2 = this.cv2;
+    // window.cv2 = this.cv2;
   },
   methods: {
+    make3dchart(res) {
+      const { x1, y1, z1, i, j, k, x, y, z } = res.data.result;
+      let data1 = {
+        type: "mesh3d",
+        x: x1,
+        y: y1,
+        z: z1,
+        i,
+        j,
+        k,
+      };
+      let data2 = {
+        x,
+        y,
+        z,
+        mode: "markers",
+        marker: {
+          size: 5,
+        },
+        type: "scatter3d",
+      };
+      let layout = {
+        margin: {
+          l: 0,
+          r: 0,
+          b: 0,
+          t: 0,
+        },
+      };
+      plotly.newPlot("myDiv", [data1, data2], layout);
+    },
     ...mapMutations([
       UPDATE_SELECTED_IMG_URL,
       PUSH_HISTORY,
@@ -880,6 +860,7 @@ export default {
     },
     handleFileChange3d(e) {
       //手动选择前景图
+      console.log(123);
       let f = e.target.files[0];
       if (!/image/.test(f.type)) {
         alert("格式错误");
@@ -919,11 +900,12 @@ export default {
           text: "Loading",
           // spinner: 'el-icon-loading',
           background: "rgba(0, 0, 0, 0.7)",
-        }); console.log(base64)
+        });
+        console.log(base64);
         getFurtherCrop3d(base64, 0)
-       
           .then((data) => {
             // this.dialogVisible = true;
+            this.make3dchart(res)
             this.furtherCropData = { ...data.data };
             loading.close();
           })
