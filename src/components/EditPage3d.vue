@@ -905,7 +905,7 @@ export default {
         getFurtherCrop3d(base64, 0)
           .then((data) => {
             // this.dialogVisible = true;
-            this.make3dchart(res)
+            this.make3dchart(data)
             this.furtherCropData = { ...data.data };
             loading.close();
           })
