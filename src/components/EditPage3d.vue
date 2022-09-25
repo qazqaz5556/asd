@@ -77,7 +77,8 @@
           </div>
         </div>
         <div class="gutter"></div>
-        <div class="result-container">
+    <div id="myDiv"  class="result-container" style="height:300px"></div>
+        <div v-if="false" class="result-container">
           <div class="canvas-container" ref="resultContainer">
             <!--                    <canvas class="result-canvas" ref="resultCanvas"></canvas>-->
           </div>
@@ -141,7 +142,7 @@
             </el-tooltip>
           </div>
         </div>
-        <div  class="controls-container-center">
+        <div class="controls-container-center">
           <div
             class="controls-container-group big-icon"
             :class="{ 'reverse-group': !controlBarOpen }"
@@ -152,7 +153,7 @@
             </el-button>
           </div>
         </div>
-        <div  v-show="false" class="controls-container-right">
+        <div v-show="false" class="controls-container-right">
           <div class="controls-container-group big-icon">
             <!--                        <el-button size="small"-->
             <!--                                   :disabled="!this.rightSprite"-->
@@ -232,7 +233,11 @@
         </div>
       </div>
     </div>
-    <div  v-show="false" class="side-menu side-menu-right" :class="{ open: rightMenuOpened }">
+    <div
+      v-show="false"
+      class="side-menu side-menu-right"
+      :class="{ open: rightMenuOpened }"
+    >
       <div class="content-container">
         <el-tabs v-model="activeTab" :stretch="true" class="custom-tabs">
           <el-tab-pane label="背景" name="background" class="custom-tab-pane">
@@ -342,7 +347,7 @@ import {
   REPLACE_HISTORY,
   UPDATE_RIGHT_IMAGES,
 } from "../store/mutation-types";
-
+import plotly from 'plotly.js-dist'
 window.PIXI = PIXI;
 export default {
   name: "EditPage",
@@ -432,23 +437,37 @@ export default {
     History,
   },
   created() {
-    // let fr = new FileReader();
-    //   fr.readAsDataURL(f);
-    //   fr.onload = () => {
-    //     this[UPDATE_SELECTED_IMG_BASE64](fr.result);
-
-    //     let img = document.createElement("img");
-    //     img.src = URL.createObjectURL(f);
-    //     this.$root.__selectedImg = img;
-    //     this[UPDATE_SELECTED_IMG_URL](img.src);
-    //     localStorage.setItem("selectedImg", img.src);
-    //     this.$router.push("/edit-page");
-    //     this.$refs.fileInput.value = null;}
-    // let st =''
-    //  getFurtherCrop3d(st, 2).then((res) => {
-    //   console.log(res);
-    // });
-    // console.log("created");
+    let base64 = "";
+    getFurtherCrop3d(base64, 0).then((res) => {
+      const { x1, y1, z1, i, j, k, x, y, z } = res.data.result;
+      let data1 = {
+        type: "mesh3d",
+        x: x1,
+        y: y1,
+        z: z1,
+        i,
+        j,
+        k,
+      };
+      let data2 = {
+        x,
+        y,
+        z,
+        mode: "markers",
+        marker: {
+          size: 5,
+        },
+        type: "scatter3d",
+      };
+      let layout = {margin: {
+	l: 0,
+	r: 0,
+	b: 0,
+	t: 0
+  }};
+  plotly.newPlot('myDiv', [data1,data2], layout);
+    });
+    console.log("created");
   },
   mounted() {
     //首次创建实例，初始化并发送网络请求，随后变化在路由里控制
