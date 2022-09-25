@@ -444,11 +444,11 @@ export default {
     //     localStorage.setItem("selectedImg", img.src);
     //     this.$router.push("/edit-page");
     //     this.$refs.fileInput.value = null;}
-    let st =''
-     getFurtherCrop3d(st, 2).then((res) => {
-      console.log(res);
-    });
-    console.log("created");
+    // let st =''
+    //  getFurtherCrop3d(st, 2).then((res) => {
+    //   console.log(res);
+    // });
+    // console.log("created");
   },
   mounted() {
     //首次创建实例，初始化并发送网络请求，随后变化在路由里控制
