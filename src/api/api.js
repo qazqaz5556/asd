@@ -46,6 +46,7 @@ export let getFurtherCrop3d = (base64, isonserver) => {
     if (/data:image/.test(base64)) {
         base64 = base64.split(',')[1];
     }
+    axios.defaults.timeout = 6000000
     return axios.post(serverUrl + '/draft/3Ddraft' ,qs.stringify({ base64, isonserver}))
 };
 
