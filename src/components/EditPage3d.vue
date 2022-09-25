@@ -346,6 +346,7 @@ import FileSaver from "file-saver";
 import * as PIXI from "pixi.js";
 import {
   getFurtherCrop,
+  getFurtherCrop3d,
   getInterSeg,
   getMatting,
   getEraser,
@@ -470,6 +471,9 @@ export default {
     History,
   },
   created() {
+    getFurtherCrop3d().then(res=>{
+        console.log(res)
+    })
     console.log("created");
   },
   mounted() {

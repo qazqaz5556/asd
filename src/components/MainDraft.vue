@@ -48,6 +48,9 @@
               <div @click="handleUpdateImg" class="router-upload">
                 <span class="el-icon-upload2">上传前景图</span>
               </div>
+              <div @click="handleUpdateImg" class="router-upload">
+                <span class="el-icon-upload2">上传前景图</span>
+              </div>
             </div>
           </div>
         </div>
