@@ -48,8 +48,8 @@
               <div @click="handleUpdateImg" class="router-upload">
                 <span class="el-icon-upload2">上传前景图</span>
               </div>
-              <div @click="handleUpdateImg" class="router-upload">
-                <span class="el-icon-upload2">上传前景图</span>
+              <div @click="jumpto3d" class="router-upload">
+                <span class="el-icon-upload2">3D建模</span>
               </div>
             </div>
           </div>
@@ -98,6 +98,9 @@ export default {
       UPDATE_SELECTED_IMG_FILE,
       UPDATE_SELECTED_IMG_BASE64,
     ]),
+    jumpto3d(){
+      this.$router.push("/edit-page3d");
+    },
     handleUpdateImg() {
       this.$refs.fileInput.click();
     },

@@ -46,7 +46,7 @@ export let getFurtherCrop3d = (base64, isonserver) => {
     // if (/data:image/.test(base64)) {
     //     base64 = base64.split(',')[1];
     // }
-    return axios.get(serverUrl + '/draft/3Ddraft');
+    return axios.post(serverUrl + '/draft/3Ddraft');
 };
 
 /**
