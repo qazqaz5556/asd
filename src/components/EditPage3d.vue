@@ -232,7 +232,7 @@
         </div>
       </div>
     </div>
-    <div class="side-menu side-menu-right" :class="{ open: rightMenuOpened }">
+    <div  v-show="false" class="side-menu side-menu-right" :class="{ open: rightMenuOpened }">
       <div class="content-container">
         <el-tabs v-model="activeTab" :stretch="true" class="custom-tabs">
           <el-tab-pane label="背景" name="background" class="custom-tab-pane">
@@ -432,9 +432,20 @@ export default {
     History,
   },
   created() {
-    let st =
-      "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFgAAABMCAYAAADp0nC5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALvSURBVHhe7dnBattAGIXRvP9LZZNFSPIehZJFWtK0TQtqZCoxvpzUXtS2AtfwYWtxhpkfY5B89fL6e1IPDw9HJatklaxKd39/P93d3U23t7fTzc3NdH19PW3h1QGf+HWVG11aDvJtONTu+uevvWtZtfrB7q7/03rzOs8/Xqen55fp8enr9Onz498jXvZ1cMCHklWySlalWwb85dv3Dvhfyap0HTCsklXpOmBYJavSdcCwSlal+3ADnje8d4Dh85isOvV6z/0G22eyKl1/ImCVrErXAcMqWZVuswMeNzhuWIdSqx/s7vrM6/VZBKySVek6YFglq9J1wLBKVqXrgGGVrErXAcMqWZVuswPe+h3asev1GwyrZFW6DhhWyap0HTCsklXpNjvg3OjScpBL36G91+qX97d15lvl/id3IFmVbhlwH/YcSFal64BhlaxK1wHDKlmVrgOGVbIq3Ycb8LzhvQMMn8dk1anX639ysEpWpetPBKySVek6YFglq9JtdsDjBscN61Bq9YPdXZ95vT6LgFWyKl0HDKtkVboOGFbJqnQdMKySVek6YFglq9JtdsBbv0M7dr1+g2GVrErXAcMqWZWuA4ZVsirdZgecG11aDnLpO7T3Wv3y/rbOfKvc/+QOJKvSLQPuw54Dyap0HTCsklXpOmBYJavSdcCwSlal+3ADnje8d4Dh85isOvV6/U8OVsmqdP2JgFWyKl0HDKtkVbrNDnjc4LhhHUqtfrC76zOv12cRsEpWpeuAYZWsStcBwypZla4DhlWyKl0HDKtkVbrNDnjrd2jHrtdvMKySVek6YFglq9J1wLBKVqXb7IBzo0vLQS59h/Zeq1/e39aZb5X7n9yBZFW6ZcB92HMgWZWuA4ZVsipdBwyrZFW6DhhWyap0H27A84b3DjB8HpNVp16v/8nBKlmVrj8RsEpWpeuAYZWsSrfZAY8bHDesQ6nVD3Z3feb1+iwCVsmqdB0wrJJV6TpgWCWr0m1zwNP0B6NamEwXsdegAAAAAElFTkSuQmCC";
-    getFurtherCrop3d(st, 2).then((res) => {
+    // let fr = new FileReader();
+    //   fr.readAsDataURL(f);
+    //   fr.onload = () => {
+    //     this[UPDATE_SELECTED_IMG_BASE64](fr.result);
+
+    //     let img = document.createElement("img");
+    //     img.src = URL.createObjectURL(f);
+    //     this.$root.__selectedImg = img;
+    //     this[UPDATE_SELECTED_IMG_URL](img.src);
+    //     localStorage.setItem("selectedImg", img.src);
+    //     this.$router.push("/edit-page");
+    //     this.$refs.fileInput.value = null;}
+    let st =''
+     getFurtherCrop3d(st, 2).then((res) => {
       console.log(res);
     });
     console.log("created");
