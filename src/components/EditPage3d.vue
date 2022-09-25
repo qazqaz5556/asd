@@ -77,7 +77,7 @@
           </div>
         </div>
         <div class="gutter"></div>
-        <div id="myDiv" class="result-container" style="height: 300px"></div>
+        <div id="myDiv" class="result-container"></div>
         <div v-if="false" class="result-container">
           <div class="canvas-container" ref="resultContainer">
             <!--                    <canvas class="result-canvas" ref="resultCanvas"></canvas>-->
