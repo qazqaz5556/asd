@@ -506,21 +506,20 @@ export default {
     // window.cv2 = this.cv2;
   },
   methods: {
-    make3dchart(res) {
-      const { x1, y1, z1, i, j, k, x, y, z } = res.data.result;
+    make3dchart(resdata) {
       let data1 = {
         type: "mesh3d",
-        x: x1,
-        y: y1,
-        z: z1,
-        i,
-        j,
-        k,
+        x: resdata.x1,
+        y: resdata.y1,
+        z: resdata.z1,
+        i:resdata.i,
+        j:resdata.j,
+        k:resdata.k,
       };
       let data2 = {
-        x,
-        y,
-        z,
+        x:resdata.x,
+        y:resdata.y,
+        z:resdata.z,
         mode: "markers",
         marker: {
           size: 5,
@@ -905,7 +904,7 @@ export default {
         getFurtherCrop3d(base64, 0)
           .then((data) => {
             // this.dialogVisible = true;
-            this.make3dchart(data)
+            this.make3dchart(data.data.result)
             this.furtherCropData = { ...data.data };
             loading.close();
           })
