@@ -419,55 +419,55 @@ export default {
     ]),
     ...mapGetters(["canUndo", "canRedo"]),
   },
-  watch: {
-    $route(to, from) {
-      console.log(to, from);
-      //新生成实例时不会更改$route
-      console.log("$route change", this.$route);
-      if (this.$route.path === "/edit-page") {
-        let handleFurtherCrop3d = (data) => {
-          this.furtherCropData = { ...data.data };
-        };
-        getFurtherCrop3d(this.selectedImgBase64, 0).then(handleFurtherCrop3d);
-      }
-    },
-  },
+//   watch: {
+//     $route(to, from) {
+//       console.log(to, from);
+//       //新生成实例时不会更改$route
+//       console.log("$route change", this.$route);
+//       if (this.$route.path === "/edit-page") {
+//         let handleFurtherCrop3d = (data) => {
+//           this.furtherCropData = { ...data.data };
+//         };
+//         getFurtherCrop3d(this.selectedImgBase64, 0).then(handleFurtherCrop3d);
+//       }
+//     },
+//   },
   components: {
     DrawingBoard,
     History,
   },
   created() {
-    let base64 = "";
-    getFurtherCrop3d(base64, 0).then((res) => {
-      const { x1, y1, z1, i, j, k, x, y, z } = res.data.result;
-      let data1 = {
-        type: "mesh3d",
-        x: x1,
-        y: y1,
-        z: z1,
-        i,
-        j,
-        k,
-      };
-      let data2 = {
-        x,
-        y,
-        z,
-        mode: "markers",
-        marker: {
-          size: 5,
-        },
-        type: "scatter3d",
-      };
-      let layout = {margin: {
-	l: 0,
-	r: 0,
-	b: 0,
-	t: 0
-  }};
-  plotly.newPlot('myDiv', [data1,data2], layout);
-    });
-    console.log("created");
+//     let base64 = "";
+//     getFurtherCrop3d(base64, 0).then((res) => {
+//       const { x1, y1, z1, i, j, k, x, y, z } = res.data.result;
+//       let data1 = {
+//         type: "mesh3d",
+//         x: x1,
+//         y: y1,
+//         z: z1,
+//         i,
+//         j,
+//         k,
+//       };
+//       let data2 = {
+//         x,
+//         y,
+//         z,
+//         mode: "markers",
+//         marker: {
+//           size: 5,
+//         },
+//         type: "scatter3d",
+//       };
+//       let layout = {margin: {
+// 	l: 0,
+// 	r: 0,
+// 	b: 0,
+// 	t: 0
+//   }};
+//   plotly.newPlot('myDiv', [data1,data2], layout);
+//     });
+//     console.log("created");
   },
   mounted() {
     //首次创建实例，初始化并发送网络请求，随后变化在路由里控制
@@ -919,8 +919,9 @@ export default {
           text: "Loading",
           // spinner: 'el-icon-loading',
           background: "rgba(0, 0, 0, 0.7)",
-        });
+        }); console.log(base64)
         getFurtherCrop3d(base64, 0)
+       
           .then((data) => {
             // this.dialogVisible = true;
             this.furtherCropData = { ...data.data };
