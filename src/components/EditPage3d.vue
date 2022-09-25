@@ -437,7 +437,6 @@ export default {
     History,
   },
   created() {
-   
     //     let base64 = "";
     //     getFurtherCrop3d(base64, 0).then((res) => {
     //
@@ -522,6 +521,12 @@ export default {
         i: resdata.i[0],
         j: resdata.j[0],
         k: resdata.k[0],
+        intensity: [0, 0.33, 0.66, 1],
+        colorscale: [
+          [0, "rgb(255, 0, 0)"],
+          [0.5, "rgb(0, 255, 0)"],
+          [1, "rgb(0, 0, 255)"],
+        ],
       };
       let data2 = {
         x: resdata.x[0],
