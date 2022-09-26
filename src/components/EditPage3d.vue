@@ -348,6 +348,7 @@ import {
   UPDATE_RIGHT_IMAGES,
 } from "../store/mutation-types";
 import plotly from "plotly.js-dist";
+import {textdata} from './../test'
 window.PIXI = PIXI;
 export default {
   name: "EditPage",
@@ -437,10 +438,7 @@ export default {
     History,
   },
   created() {
-    //     let base64 = "";
-    //     getFurtherCrop3d(base64, 0).then((res) => {
-    //
-    //     console.log("created");
+      console.log(33,textdata)
   },
   mounted() {
     //首次创建实例，初始化并发送网络请求，随后变化在路由里控制
@@ -516,12 +514,7 @@ export default {
         i: resdata.i[0],
         j: resdata.j[0],
         k: resdata.k[0],
-        intensity: [0, 0.33, 0.66, 1],
-        colorscale: [
-          [0, "rgb(255, 0, 0)"],
-          [0.5, "rgb(0, 255, 0)"],
-          [1, "rgb(0, 0, 255)"],
-        ],
+      
       };
       let data2 = {
         x: resdata.x[0],
@@ -873,7 +866,6 @@ export default {
     },
     handleFileChange3d(e) {
       //手动选择前景图
-      console.log(123);
       let f = e.target.files[0];
       if (!/image/.test(f.type)) {
         alert("格式错误");
@@ -904,7 +896,6 @@ export default {
       var fr = new FileReader();
       fr.readAsDataURL(f);
       let base64 = null;
-
       fr.onload = () => {
         base64 = fr.result;
         // this.$root.__selectedImg.base64 = base64
@@ -914,7 +905,6 @@ export default {
           // spinner: 'el-icon-loading',
           background: "rgba(0, 0, 0, 0.7)",
         });
-        console.log(base64);
         getFurtherCrop3d(base64, 0)
           .then((data) => {
             // this.dialogVisible = true;
@@ -926,6 +916,12 @@ export default {
             this.$message({ type: "error", message: e });
             loading.close();
           });
+      
+            // this.dialogVisible = true;
+            // this.make3dchart(textdata);
+            // this.furtherCropData = { ...data.data };
+            loading.close();
+        
         this.$refs.fileInput.value = null;
       };
     },
