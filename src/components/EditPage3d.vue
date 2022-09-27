@@ -26,7 +26,7 @@
         <!-- <div @click="handleToDraftCanvas" class="left-menu-item">
           <i class="el-icon-search"></i>
         </div>
-        <span class="left-menu-text">草图检索</span> -->
+        <span class="left-menu-text">草图检索</span>-->
         <div @click="handleUpdateImg" class="left-menu-item">
           <i class="el-icon-upload2"></i>
         </div>
@@ -42,15 +42,12 @@
         <div @click="handleLoadProject" class="left-menu-item">
           <i class="el-icon-folder-opened"></i>
         </div>
-        <span class="left-menu-text">加载</span> -->
+        <span class="left-menu-text">加载</span>-->
       </div>
       <div class="side-menu-switch" @click="switchMenuLeft">
         <i class="triangle triangle-top triangle-shadow"></i>
         <i class="triangle triangle-top"></i>
-        <i
-          class="square"
-          :class="['el-icon-arrow-' + (leftMenuOpened ? 'left' : 'right')]"
-        ></i>
+        <i class="square" :class="['el-icon-arrow-' + (leftMenuOpened ? 'left' : 'right')]"></i>
         <i class="triangle triangle-bottom"></i>
         <i class="triangle triangle-bottom triangle-shadow"></i>
       </div>
@@ -84,10 +81,7 @@
           </div>
         </div>
       </div>
-      <div
-        class="controls-container"
-        :class="{ 'control-bar-open': controlBarOpen }"
-      >
+      <div class="controls-container" :class="{ 'control-bar-open': controlBarOpen }">
         <div v-show="false" class="controls-container-left">
           <div class="controls-container-group">
             <el-button size="small" @click="handleToolsClick('clip-front')">
@@ -117,27 +111,17 @@
               class="tool-slider"
               v-model="lineWidth"
               @change="handleSliderChange"
-            >
-            </el-slider>
+            ></el-slider>
           </div>
           <div class="controls-container-group big-icon">
             <el-tooltip :content="undoOptions.content" placement="bottom-start">
-              <el-button
-                type="small"
-                @click="undo"
-                :disabled="!canUndo"
-                class="left-menu-item"
-              >
+              <el-button type="small" @click="undo" :disabled="!canUndo" class="left-menu-item">
                 <i class="iconfont icon-undo"></i>
               </el-button>
             </el-tooltip>
             <el-tooltip :content="redoOptions.content" placement="bottom-end">
-              <el-button
-                type="small"
-                @click="redo"
-                :disabled="!canRedo"
-                class="left-menu-item"
-                ><i class="iconfont icon-redo"></i>
+              <el-button type="small" @click="redo" :disabled="!canRedo" class="left-menu-item">
+                <i class="iconfont icon-redo"></i>
               </el-button>
             </el-tooltip>
           </div>
@@ -161,43 +145,23 @@
             <!--                            <i class="iconfont icon-copy"></i>-->
             <!--                            复制-->
             <!--                        </el-button>-->
-            <el-button
-              size="small"
-              :disabled="!this.rightSprite"
-              @click="deleteSprite"
-            >
+            <el-button size="small" :disabled="!this.rightSprite" @click="deleteSprite">
               <i class="iconfont icon-clean"></i>
               <!--                            删除-->
             </el-button>
-            <el-button
-              size="small"
-              :disabled="!this.rightSprite"
-              @click="scale('enlarge')"
-            >
+            <el-button size="small" :disabled="!this.rightSprite" @click="scale('enlarge')">
               <i class="iconfont icon-fangda"></i>
               <!--                            缩放-->
             </el-button>
-            <el-button
-              size="small"
-              :disabled="!this.rightSprite"
-              @click="scale('reduce')"
-            >
+            <el-button size="small" :disabled="!this.rightSprite" @click="scale('reduce')">
               <i class="iconfont icon-suoxiao"></i>
               <!--                            缩放-->
             </el-button>
-            <el-button
-              size="small"
-              :disabled="!this.rightSprite"
-              @click="reverse('lr')"
-            >
+            <el-button size="small" :disabled="!this.rightSprite" @click="reverse('lr')">
               <i class="iconfont icon-lr-change"></i>
               <!--                            左右翻转-->
             </el-button>
-            <el-button
-              size="small"
-              :disabled="!this.rightSprite"
-              @click="reverse('tb')"
-            >
+            <el-button size="small" :disabled="!this.rightSprite" @click="reverse('tb')">
               <i class="iconfont icon-tb-change"></i>
               <!--                            上下翻转-->
             </el-button>
@@ -205,11 +169,7 @@
               <i class="iconfont icon-goup"></i>
               <!--                            上移一层-->
             </el-button>
-            <el-button
-              size="small"
-              :disabled="!this.rightSprite"
-              @click="goDown"
-            >
+            <el-button size="small" :disabled="!this.rightSprite" @click="goDown">
               <i class="iconfont icon-godown"></i>
               <!--                            下移一层-->
             </el-button>
@@ -221,11 +181,7 @@
             <!--                        </el-button>-->
           </div>
           <div class="controls-container-group big-icon">
-            <el-button
-              size="small"
-              :disabled="!this.rightSprite"
-              @click="handleDownloadFussion"
-            >
+            <el-button size="small" :disabled="!this.rightSprite" @click="handleDownloadFussion">
               <i class="iconfont el-icon-download"></i>
               <!--                            删除-->
             </el-button>
@@ -233,17 +189,11 @@
         </div>
       </div>
     </div>
-    <div
-      v-show="false"
-      class="side-menu side-menu-right"
-      :class="{ open: rightMenuOpened }"
-    >
+    <div v-show="false" class="side-menu side-menu-right" :class="{ open: rightMenuOpened }">
       <div class="content-container">
         <el-tabs v-model="activeTab" :stretch="true" class="custom-tabs">
           <el-tab-pane label="背景" name="background" class="custom-tab-pane">
-            <el-button @click="addBackgroundImg" style="margin: 0 17px 10px 0"
-              >添加背景图</el-button
-            >
+            <el-button @click="addBackgroundImg" style="margin: 0 17px 10px 0">添加背景图</el-button>
             <div class="picture-stack">
               <div class="picture-stack-backgrounds-container">
                 <transition-group name="bgstack" tag="div">
@@ -253,15 +203,12 @@
                     :key="item.imgSrc"
                   >
                     <img
-                      alt=""
+                      alt
                       :class="[item.isBeingUse ? 'is-being-use' : '']"
                       :src="item.imgSrc"
                       @click="switchBackGroundImg"
                     />
-                    <span
-                      class="deletbtn el-icon-delete"
-                      @click="removeBackgroundImg(item)"
-                    ></span>
+                    <span class="deletbtn el-icon-delete" @click="removeBackgroundImg(item)"></span>
                   </div>
                 </transition-group>
               </div>
@@ -269,11 +216,7 @@
           </el-tab-pane>
           <el-tab-pane label="图层" name="layer" class="custom-tab-pane">
             <div class="picture-stack-rightImg-Container">
-              <div
-                class="picture-unit"
-                v-for="item in rightImages"
-                :key="item.name"
-              >
+              <div class="picture-unit" v-for="item in rightImages" :key="item.name">
                 <span
                   class="lock iconfont icon-lock"
                   :class="{ locked: item.locked }"
@@ -282,15 +225,12 @@
                 <img
                   :class="{ selected: item.selected }"
                   :src="item.rt"
-                  alt=""
+                  alt
                   @click="selectCurrentRightSprite(item.name, $event)"
                 />
-                <span
-                  ><i
-                    class="restore iconfont icon-pencil"
-                    @click="restore(item)"
-                  ></i
-                ></span>
+                <span>
+                  <i class="restore iconfont icon-pencil" @click="restore(item)"></i>
+                </span>
               </div>
             </div>
           </el-tab-pane>
@@ -300,10 +240,7 @@
       <div class="side-menu-switch" @click="switchMenuRight">
         <i class="triangle triangle-top triangle-shadow"></i>
         <i class="triangle triangle-top"></i>
-        <i
-          class="square"
-          :class="['el-icon-arrow-' + (rightMenuOpened ? 'left' : 'right')]"
-        ></i>
+        <i class="square" :class="['el-icon-arrow-' + (rightMenuOpened ? 'left' : 'right')]"></i>
         <i class="triangle triangle-bottom"></i>
         <i class="triangle triangle-bottom triangle-shadow"></i>
       </div>
@@ -348,7 +285,7 @@ import {
   UPDATE_RIGHT_IMAGES,
 } from "../store/mutation-types";
 import plotly from "plotly.js-dist";
-import {textdata} from './../test'
+import { textdata } from "./../test";
 window.PIXI = PIXI;
 export default {
   name: "EditPage",
@@ -438,7 +375,7 @@ export default {
     History,
   },
   created() {
-      console.log(33,textdata)
+    console.log(33, textdata);
   },
   mounted() {
     //首次创建实例，初始化并发送网络请求，随后变化在路由里控制
@@ -502,7 +439,6 @@ export default {
     window.$editPage = this;
     window.cv1 = this.cv1;
     // window.cv2 = this.cv2;
-   
   },
   methods: {
     make3dchart(resdata) {
@@ -514,7 +450,6 @@ export default {
         i: resdata.i[0],
         j: resdata.j[0],
         k: resdata.k[0],
-      
       };
       let data2 = {
         x: resdata.x[0],
@@ -883,11 +818,21 @@ export default {
       let textrue;
       this.cv1.loader.add(blobUrl).load(() => {
         textrue = new PIXI.Texture.from(blobUrl);
-        this.leftSprite.texture = textrue;
-        this.leftSprite.textureSrc = blobUrl;
-        this.leftSprite.scale.set(1);
-        this.leftSprite.x = 0;
-        this.leftSprite.y = 0;
+        setTimeout(() => {
+          let width = (width = textrue.orig.width);
+          let height = textrue.orig.height;
+          while (width > 800 || height > 1000) {
+            width = width - 10;
+            height = height - (height/width)*10;
+          }
+          this.leftSprite.texture = textrue;
+          this.leftSprite.textureSrc = blobUrl;
+          this.leftSprite.scale.set(1);
+          this.leftSprite.width = width;
+          this.leftSprite.height = height;
+          this.leftSprite.x = 50;
+          this.leftSprite.y = 50;
+        }, 2000);
       });
 
       // this.leftSprite = PIXI.Sprite.from( this.$root.__selectedImg);
@@ -916,12 +861,12 @@ export default {
             this.$message({ type: "error", message: e });
             loading.close();
           });
-      
-            // this.dialogVisible = true;
-            // this.make3dchart(textdata);
-            // this.furtherCropData = { ...data.data };
-            loading.close();
-        
+
+        // this.dialogVisible = true;
+        // this.make3dchart(textdata);
+        // this.furtherCropData = { ...data.data };
+        loading.close();
+
         this.$refs.fileInput.value = null;
       };
     },
