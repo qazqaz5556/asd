@@ -819,11 +819,11 @@ export default {
       this.cv1.loader.add(blobUrl).load(() => {
         textrue = new PIXI.Texture.from(blobUrl);
         setTimeout(() => {
-          let width = (width = textrue.orig.width);
+          let width = textrue.orig.width;
           let height = textrue.orig.height;
           while (width > 800 || height > 1000) {
             width = width - 10;
-            height = height - (height/width)*10;
+            height = height - (height / width) * 10;
           }
           this.leftSprite.texture = textrue;
           this.leftSprite.textureSrc = blobUrl;
