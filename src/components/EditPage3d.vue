@@ -375,7 +375,7 @@ export default {
     History,
   },
   created() {
-    console.log(33, textdata);
+    console.log(33);
   },
   mounted() {
     //首次创建实例，初始化并发送网络请求，随后变化在路由里控制
@@ -821,7 +821,11 @@ export default {
         setTimeout(() => {
           let width = textrue.orig.width;
           let height = textrue.orig.height;
-          while (width > 800 || height > 1000) {
+          let windowW =
+            document.documentElement.clientWidth || document.body.clientWidth;
+          let windowHeight =
+            document.documentElement.clientHeight || document.body.clientHeight;
+          while (width > windowW * 0.45 || height > windowHeight * 0.8) {
             width = width - 10;
             height = height - (height / width) * 10;
           }
