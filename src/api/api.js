@@ -2,6 +2,7 @@ import axios from 'axios'
 import qs from 'qs'
 
 //线上服务器地址
+//修改ip记得搜索全局 有的地方没用这个ip
 export const serverUrl =
     // 'http://10.108.126.36:8900';
     ''

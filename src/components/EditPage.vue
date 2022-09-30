@@ -1854,7 +1854,6 @@ export default {
         this.cv2.stage.addChild(mask);
       }, 1000);
 
-      let d;
       setTimeout(() => {
         let base64 = this.cv2.renderer.plugins.extract.base64(this.cv2.stage);
         let img = new Image();
