@@ -1520,6 +1520,7 @@ export default {
       try {
         let data = await getMatting(front, isChoose, base);
         let src = data.data.front; //裁切好的图片 放到右侧
+        let srcleft = data.data.mask; //裁切好的图片 放到左侧
         this.lastSegUrl = data.data.front;
 
         // 右侧图片别名，添加ID顺序递增
@@ -1536,6 +1537,8 @@ export default {
           data.data.mask,
           info
         );
+        this.leftSprite.texture=lsBase64
+        console.log(lsBase64)
         //当前左侧图片所对应的右侧图片，用来检测删除右侧图时，左侧图是否跟随一起移除。
         this.leftSprite.mapName = name;
         this.drawBoardWidth = info.width;
